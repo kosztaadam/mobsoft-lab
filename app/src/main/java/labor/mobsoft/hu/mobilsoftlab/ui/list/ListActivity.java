@@ -1,4 +1,4 @@
-package labor.mobsoft.hu.mobilsoftlab.ui.main;
+package labor.mobsoft.hu.mobilsoftlab.ui.list;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,10 +9,10 @@ import javax.inject.Inject;
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.R;
 
-public class MainActivity extends AppCompatActivity implements MainScreen {
+public class ListActivity extends AppCompatActivity implements ListScreen {
 
     @Inject
-    MainPresenter mainPresenter;
+    ListPresenter listPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +25,13 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     @Override
     protected void onStart() {
         super.onStart();
-        mainPresenter.attachScreen(this);
+        listPresenter.attachScreen(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mainPresenter.detachScreen();
+        listPresenter.detachScreen();
     }
 
     @Override
