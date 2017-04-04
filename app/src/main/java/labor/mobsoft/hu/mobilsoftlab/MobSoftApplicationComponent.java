@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import labor.mobsoft.hu.mobilsoftlab.ui.UIModule;
+import labor.mobsoft.hu.mobilsoftlab.ui.list.ListActivity;
 import labor.mobsoft.hu.mobilsoftlab.ui.main.MainActivity;
 
 /**
@@ -14,5 +15,7 @@ import labor.mobsoft.hu.mobilsoftlab.ui.main.MainActivity;
 @Component(modules = {UIModule.class})
 public interface MobSoftApplicationComponent {
     void inject(MainActivity mainActivity);
+
+    void inject(ListActivity listActivity);
 
 }
