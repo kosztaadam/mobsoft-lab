@@ -1,4 +1,4 @@
-package labor.mobsoft.hu.mobilsoftlab.ui.addrecipe;
+package labor.mobsoft.hu.mobilsoftlab.ui.editrecipe;
 
 import labor.mobsoft.hu.mobilsoftlab.ui.Presenter;
 
@@ -6,13 +6,13 @@ import labor.mobsoft.hu.mobilsoftlab.ui.Presenter;
  * Created by mobsoft on 2017. 03. 31..
  */
 
-public class AddRecipePresenter extends Presenter<AddRecipeScreen> {
+public class EditRecipePresenter extends Presenter<EditRecipeScreen> {
 
-    public AddRecipePresenter() {
+    public EditRecipePresenter() {
     }
 
     @Override
-    public void attachScreen(AddRecipeScreen screen) {
+    public void attachScreen(EditRecipeScreen screen) {
         super.attachScreen(screen);
     }
 

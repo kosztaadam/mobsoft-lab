@@ -1,18 +1,17 @@
-package labor.mobsoft.hu.mobilsoftlab.ui.addrecipe;
+package labor.mobsoft.hu.mobilsoftlab.ui.editrecipe;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import javax.inject.Inject;
 
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.R;
 
-public class AddRecipeActivity extends AppCompatActivity implements AddRecipeScreen {
+public class EditRecipeActivity extends AppCompatActivity implements EditRecipeScreen {
 
     @Inject
-    AddRecipePresenter addRecipePresenter;
+    EditRecipePresenter editRecipePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +24,13 @@ public class AddRecipeActivity extends AppCompatActivity implements AddRecipeScr
     @Override
     protected void onStart() {
         super.onStart();
-        addRecipePresenter.attachScreen(this);
+        editRecipePresenter.attachScreen(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        addRecipePresenter.detachScreen();
+        editRecipePresenter.detachScreen();
     }
 
     @Override
@@ -40,7 +39,7 @@ public class AddRecipeActivity extends AppCompatActivity implements AddRecipeScr
     }
 
     @Override
-    public void addRecipe(String recipe) {
+    public void updateRecipe(String recipe) {
 
     }
 

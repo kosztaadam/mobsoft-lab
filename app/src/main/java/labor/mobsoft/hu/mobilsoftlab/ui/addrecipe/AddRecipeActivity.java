@@ -35,7 +35,17 @@ public class AddRecipeActivity extends AppCompatActivity implements AddRecipeScr
     }
 
     @Override
-    public void showMessage(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    public void showRecipeDetails(String recipe) {
+
+    }
+
+    @Override
+    public void addRecipe(String recipe) {
+
+    }
+
+    @Override
+    public void showError(String errorMessage) {
+
     }
 }

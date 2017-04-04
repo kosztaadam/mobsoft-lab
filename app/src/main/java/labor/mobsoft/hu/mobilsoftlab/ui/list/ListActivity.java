@@ -34,8 +34,14 @@ public class ListActivity extends AppCompatActivity implements ListScreen {
         listPresenter.detachScreen();
     }
 
+
     @Override
-    public void showMessage(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    public void showError(String text) {
+
+    }
+
+    @Override
+    public void listRecipes() {
+
     }
 }

@@ -1,4 +1,4 @@
-package labor.mobsoft.hu.mobilsoftlab.ui.editrecipe;
+package labor.mobsoft.hu.mobilsoftlab.ui.details;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,10 +8,10 @@ import javax.inject.Inject;
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.R;
 
-public class EditRecipeActivity extends AppCompatActivity implements EditRecipeScreen {
+public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDetailsScreen {
 
     @Inject
-    EditRecipePresenter editRecipePresenter;
+    RecipeDetailsPresenter recipeDeatilsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +24,13 @@ public class EditRecipeActivity extends AppCompatActivity implements EditRecipeS
     @Override
     protected void onStart() {
         super.onStart();
-        editRecipePresenter.attachScreen(this);
+        recipeDeatilsPresenter.attachScreen(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        editRecipePresenter.detachScreen();
+        recipeDeatilsPresenter.detachScreen();
     }
 
     @Override

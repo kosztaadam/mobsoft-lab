@@ -5,7 +5,6 @@ package labor.mobsoft.hu.mobilsoftlab.ui.list;
  */
 
 public interface ListScreen {
-    void showMessage(String text);
     void showError(String text);
     void listRecipes();
 }
