@@ -1,4 +1,4 @@
-package labor.mobsoft.hu.mobilsoftlab.ui.main;
+package labor.mobsoft.hu.mobilsoftlab.ui.list;
 
 import labor.mobsoft.hu.mobilsoftlab.ui.Presenter;
 
@@ -6,14 +6,13 @@ import labor.mobsoft.hu.mobilsoftlab.ui.Presenter;
  * Created by mobsoft on 2017. 03. 31..
  */
 
-public class MainPresenter extends Presenter<MainScreen> {
+public class ListPresenter extends Presenter<ListScreen> {
 
-    public MainPresenter() {
+    public ListPresenter() {
     }
 
-
     @Override
-    public void attachScreen(MainScreen screen) {
+    public void attachScreen(ListScreen screen) {
         super.attachScreen(screen);
     }
 
