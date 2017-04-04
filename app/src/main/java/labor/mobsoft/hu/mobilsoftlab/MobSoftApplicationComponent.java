@@ -4,6 +4,9 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import labor.mobsoft.hu.mobilsoftlab.ui.UIModule;
+import labor.mobsoft.hu.mobilsoftlab.ui.addrecipe.AddRecipeActivity;
+import labor.mobsoft.hu.mobilsoftlab.ui.details.RecipeDetailsActivity;
+import labor.mobsoft.hu.mobilsoftlab.ui.editrecipe.EditRecipeActivity;
 import labor.mobsoft.hu.mobilsoftlab.ui.list.ListActivity;
 import labor.mobsoft.hu.mobilsoftlab.ui.main.MainActivity;
 
@@ -17,5 +20,7 @@ public interface MobSoftApplicationComponent {
     void inject(MainActivity mainActivity);
 
     void inject(ListActivity listActivity);
-
+    void inject(AddRecipeActivity addRecipeActivity);
+    void inject(EditRecipeActivity editRecipeActivity);
+    void inject(RecipeDetailsActivity recipeDetailsActivity);
 }

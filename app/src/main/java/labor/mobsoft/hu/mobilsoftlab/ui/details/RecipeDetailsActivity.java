@@ -1,18 +1,17 @@
-package labor.mobsoft.hu.mobilsoftlab.ui.list;
+package labor.mobsoft.hu.mobilsoftlab.ui.details;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.R;
 
-public class ListActivity extends AppCompatActivity implements ListScreen {
+public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDetailsScreen {
 
     @Inject
-    ListPresenter listPresenter;
+    RecipeDetailsPresenter recipeDeatilsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,23 +24,27 @@ public class ListActivity extends AppCompatActivity implements ListScreen {
     @Override
     protected void onStart() {
         super.onStart();
-        listPresenter.attachScreen(this);
+        recipeDeatilsPresenter.attachScreen(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        listPresenter.detachScreen();
-    }
-
-
-    @Override
-    public void showError(String text) {
-
+        recipeDeatilsPresenter.detachScreen();
     }
 
     @Override
-    public void listRecipes() {
+    public void showRecipeDetails(String recipe) {
+
+    }
+
+    @Override
+    public void updateRecipe(String recipe) {
+
+    }
+
+    @Override
+    public void showError(String errorMessage) {
 
     }
 }
