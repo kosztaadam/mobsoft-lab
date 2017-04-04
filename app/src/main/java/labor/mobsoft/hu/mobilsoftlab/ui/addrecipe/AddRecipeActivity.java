@@ -1,7 +1,7 @@
-package labor.mobsoft.hu.mobilsoftlab.ui.list;
+package labor.mobsoft.hu.mobilsoftlab.ui.addrecipe;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import javax.inject.Inject;
@@ -9,10 +9,10 @@ import javax.inject.Inject;
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.R;
 
-public class ListActivity extends AppCompatActivity implements ListScreen {
+public class AddRecipeActivity extends AppCompatActivity implements AddRecipeScreen {
 
     @Inject
-    ListPresenter listPresenter;
+    AddRecipePresenter addRecipePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,23 +25,27 @@ public class ListActivity extends AppCompatActivity implements ListScreen {
     @Override
     protected void onStart() {
         super.onStart();
-        listPresenter.attachScreen(this);
+        addRecipePresenter.attachScreen(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        listPresenter.detachScreen();
-    }
-
-
-    @Override
-    public void showError(String text) {
-
+        addRecipePresenter.detachScreen();
     }
 
     @Override
-    public void listRecipes() {
+    public void showRecipeDetails(String recipe) {
+
+    }
+
+    @Override
+    public void addRecipe(String recipe) {
+
+    }
+
+    @Override
+    public void showError(String errorMessage) {
 
     }
 }
