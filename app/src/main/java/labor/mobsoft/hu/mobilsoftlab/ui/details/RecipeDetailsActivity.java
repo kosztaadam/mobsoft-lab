@@ -39,9 +39,10 @@ public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDe
     }
 
     @Override
-    public void updateRecipe(String recipe) {
+    public void deleteRecipe(String recipe) {
 
     }
+
 
     @Override
     public void showError(String errorMessage) {
