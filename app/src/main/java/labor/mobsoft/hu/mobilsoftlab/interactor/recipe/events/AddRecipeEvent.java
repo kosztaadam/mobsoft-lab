@@ -5,4 +5,7 @@ package labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events;
  */
 
 public class AddRecipeEvent {
+
+    public AddRecipeEvent() {
+    }
 }

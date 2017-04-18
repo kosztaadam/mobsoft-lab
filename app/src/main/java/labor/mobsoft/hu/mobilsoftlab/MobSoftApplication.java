@@ -2,6 +2,9 @@ package labor.mobsoft.hu.mobilsoftlab;
 
 import android.app.Application;
 
+import javax.inject.Inject;
+
+import labor.mobsoft.hu.mobilsoftlab.repository.Repository;
 import labor.mobsoft.hu.mobilsoftlab.ui.UIModule;
 
 /**
@@ -9,6 +12,9 @@ import labor.mobsoft.hu.mobilsoftlab.ui.UIModule;
  */
 
 public class MobSoftApplication extends Application {
+
+    @Inject
+    Repository repository;
 
     public static MobSoftApplicationComponent injector;
 
@@ -21,5 +27,8 @@ public class MobSoftApplication extends Application {
                         uIModule(
                                 new UIModule(this)
                         ).build();
+
+        injector.inject(this);
+        repository.open(getApplicationContext());
     }
 }

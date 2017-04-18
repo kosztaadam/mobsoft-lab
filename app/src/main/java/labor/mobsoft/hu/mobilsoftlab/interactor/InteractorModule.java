@@ -11,12 +11,10 @@ import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.RecipesInteractor;
 @Module
 public class InteractorModule {
 
-
     @Provides
     public RecipesInteractor provideRecipesInteractor() {
         return new RecipesInteractor();
     }
-
 
 }
 
