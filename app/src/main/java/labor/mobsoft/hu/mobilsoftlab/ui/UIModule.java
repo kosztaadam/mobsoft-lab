@@ -1,13 +1,17 @@
 package labor.mobsoft.hu.mobilsoftlab.ui;
 
 import android.content.Context;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.greenrobot.event.EventBus;
 import labor.mobsoft.hu.mobilsoftlab.ui.addrecipe.AddRecipePresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.details.RecipeDetailsPresenter;
-import labor.mobsoft.hu.mobilsoftlab.ui.editrecipe.EditRecipeActivity;
 import labor.mobsoft.hu.mobilsoftlab.ui.editrecipe.EditRecipePresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.list.ListPresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.main.MainPresenter;
@@ -58,5 +62,18 @@ public class UIModule {
     public RecipeDetailsPresenter provideRecipeDeatilsPresenter() {
         return new RecipeDetailsPresenter();
     }
+
+    @Provides
+    @Singleton
+    public EventBus provideEventBus() {
+        return EventBus.getDefault();
+    }
+
+    @Provides
+    @Singleton
+    public Executor provideExecutor() {
+        return Executors.newFixedThreadPool(1);
+    }
+
 
 }
