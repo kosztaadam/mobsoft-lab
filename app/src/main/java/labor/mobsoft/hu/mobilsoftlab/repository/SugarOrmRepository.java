@@ -35,12 +35,11 @@ public class SugarOrmRepository implements Repository {
         //SugarRecord.saveInTx(recipe);
         recipe.save();
     }
-
     @Override
-    public void removeRecipe(Long id) {
+    public void removeRecipe(Recipe recipe) {
         //SugarRecord.deleteInTx(id);
-        Recipe recipe = Recipe.findById(Recipe.class, 1);
-        recipe.delete();
+        Recipe delRecipe = Recipe.findById(Recipe.class, recipe.getId());
+        delRecipe.delete();
     }
 
     @Override

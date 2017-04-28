@@ -7,5 +7,5 @@ package labor.mobsoft.hu.mobilsoftlab.ui.addrecipe;
 public interface AddRecipeScreen {
     void showRecipeDetails(String recipe);
     void addRecipe(String recipe);
-    void showError(String errorMessage);
+    void showMessage(String errorMessage);
 }

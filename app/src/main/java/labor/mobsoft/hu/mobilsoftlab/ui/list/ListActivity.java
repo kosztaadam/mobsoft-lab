@@ -36,7 +36,7 @@ public class ListActivity extends AppCompatActivity implements ListScreen {
 
 
     @Override
-    public void showError(String text) {
+    public void showMessage(String text) {
 
     }
 

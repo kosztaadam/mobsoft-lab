@@ -45,7 +45,7 @@ public class AddRecipeActivity extends AppCompatActivity implements AddRecipeScr
     }
 
     @Override
-    public void showError(String errorMessage) {
+    public void showMessage(String errorMessage) {
 
     }
 }

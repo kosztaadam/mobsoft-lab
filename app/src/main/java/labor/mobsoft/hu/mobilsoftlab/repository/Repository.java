@@ -20,7 +20,7 @@ public interface Repository {
 
     void addRecipe(Recipe recipe);
 
-    void removeRecipe(Long id);
+    void removeRecipe(Recipe recipe);
 
     void updateRecipe(Recipe recipe);
 
