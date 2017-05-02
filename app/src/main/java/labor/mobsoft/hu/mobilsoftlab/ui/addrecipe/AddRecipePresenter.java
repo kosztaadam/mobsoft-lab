@@ -37,11 +37,11 @@ public class AddRecipePresenter extends Presenter<AddRecipeScreen> {
         super.detachScreen();
     }
 
-    public void addRecipe() {
+    public void addRecipe(final Recipe recipe) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                recipesInteractor.addRecipe();
+                recipesInteractor.addRecipe(recipe);
             }
         });
     }
