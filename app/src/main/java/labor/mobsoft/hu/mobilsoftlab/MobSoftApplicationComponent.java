@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import labor.mobsoft.hu.mobilsoftlab.interactor.InteractorModule;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.RecipesInteractor;
+import labor.mobsoft.hu.mobilsoftlab.network.NetworkModule;
 import labor.mobsoft.hu.mobilsoftlab.repository.RepositoryModule;
 import labor.mobsoft.hu.mobilsoftlab.ui.UIModule;
 import labor.mobsoft.hu.mobilsoftlab.ui.addrecipe.AddRecipeActivity;
@@ -18,7 +19,7 @@ import labor.mobsoft.hu.mobilsoftlab.ui.main.MainActivity;
  */
 
 @Singleton
-@Component(modules = {UIModule.class, RepositoryModule.class, InteractorModule.class})
+@Component(modules = {UIModule.class, RepositoryModule.class, InteractorModule.class, NetworkModule.class})
 public interface MobSoftApplicationComponent {
     void inject(MainActivity mainActivity);
 

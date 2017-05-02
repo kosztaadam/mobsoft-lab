@@ -7,8 +7,10 @@ import javax.inject.Inject;
 
 import de.greenrobot.event.EventBus;
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
+import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.AddRecipeEvent;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.GetRecipesEvent;
 import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
+import labor.mobsoft.hu.mobilsoftlab.network.recipe.RecipeApi;
 import labor.mobsoft.hu.mobilsoftlab.repository.Repository;
 import labor.mobsoft.hu.mobilsoftlab.ui.addrecipe.AddRecipeActivity;
 
@@ -24,12 +26,26 @@ public class RecipesInteractor {
     @Inject
     EventBus bus;
 
+    @Inject
+    RecipeApi recipeApi;
+
     public RecipesInteractor() {
         MobSoftApplication.injector.inject(this);
     }
 
-    public void addRecipe() {
+    public void addRecipe(Recipe recipe) {
+        AddRecipeEvent event = new AddRecipeEvent();
+        event.setRecipe(recipe);
+        try {
+           // RecipeApi.saveFavourite(todo).execute();
+            repository.addRecipe(recipe);
+            bus.post(event);
+        } catch (Exception e) {
+            event.setThrowable(e);
+            bus.post(event);
+        }
     }
+
 
     public void getRecipes() {
         GetRecipesEvent event = new GetRecipesEvent();
