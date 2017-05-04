@@ -2,11 +2,12 @@ package labor.mobsoft.hu.mobilsoftlab.ui.addrecipe;
 
 import android.util.Log;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
-import de.greenrobot.event.EventBus;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.RecipesInteractor;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.GetRecipesEvent;
 import labor.mobsoft.hu.mobilsoftlab.model.Recipe;

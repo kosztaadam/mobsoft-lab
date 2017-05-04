@@ -8,6 +8,7 @@ import com.orm.SugarRecord;
 import java.util.List;
 
 import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
+import labor.mobsoft.hu.mobilsoftlab.model.User;
 
 /**
  * Created by Koszta Ádám on 2017. 04. 18..
@@ -28,6 +29,11 @@ public class SugarOrmRepository implements Repository {
     @Override
     public List<Recipe> getRecipes() {
         return SugarRecord.listAll(Recipe.class);
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return null;
     }
 
     @Override

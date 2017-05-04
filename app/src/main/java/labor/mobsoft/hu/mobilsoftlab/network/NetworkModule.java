@@ -8,6 +8,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import labor.mobsoft.hu.mobilsoftlab.network.recipe.LoginApi;
 import labor.mobsoft.hu.mobilsoftlab.network.recipe.RecipeApi;
 import labor.mobsoft.hu.mobilsoftlab.utils.GsonHelper;
 import okhttp3.OkHttpClient;
@@ -39,8 +40,14 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    public RecipeApi provideATodoApi(Retrofit retrofit) {
+    public RecipeApi provideRecipeApi(Retrofit retrofit) {
         return retrofit.create(RecipeApi.class);
+    }
+
+    @Provides
+    @Singleton
+    public LoginApi provideLoginApi(Retrofit retrofit) {
+        return retrofit.create(LoginApi.class);
     }
 
 }

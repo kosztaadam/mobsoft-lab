@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
+import labor.mobsoft.hu.mobilsoftlab.model.User;
 
 /**
  * Created by mobsoft on 2017. 04. 28..
@@ -14,6 +15,7 @@ import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
 public class MemoryRepository implements Repository {
 
     public static List<Recipe> recipes;
+    public static List<User> users;
 
     @Override
     public void open(Context context) {
@@ -23,6 +25,13 @@ public class MemoryRepository implements Repository {
         recipes = new ArrayList<>();
         recipes.add(recipe1);
         recipes.add(recipe2);
+
+        User user1 = new User(1L, "bela");
+        User user2 = new User(1L, "adam");
+
+        users = new ArrayList<>();
+        users.add(user1);
+        users.add(user2);
     }
 
     @Override
@@ -33,6 +42,11 @@ public class MemoryRepository implements Repository {
     @Override
     public List<Recipe> getRecipes() {
         return recipes;
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return users;
     }
 
     @Override

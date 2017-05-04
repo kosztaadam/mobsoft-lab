@@ -18,7 +18,7 @@ import okio.Okio;
  */
 
 public class MockHelper {
-    public static Response makeResponse(Request request, Headers headers, int code, final String content) {
+/*    public static Response makeResponse(Request request, Headers headers, int code, final String content) {
 
         return new Response.Builder().protocol(Protocol.HTTP_2).code(code).request(request).headers(headers).body(new ResponseBody() {
             @Override
@@ -48,5 +48,5 @@ public class MockHelper {
         } catch (final IOException e) {
             return "";
         }
-    }
+    }*/
 }
