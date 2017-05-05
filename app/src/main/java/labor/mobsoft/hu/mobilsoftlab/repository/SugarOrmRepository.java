@@ -55,4 +55,9 @@ public class SugarOrmRepository implements Repository {
         recipe.save(); // updates the previous entry with new values.
     }
 
+    @Override
+    public Recipe getRecipe(Long id) {
+        return SugarRecord.findById(Recipe.class, id);
+    }
+
 }

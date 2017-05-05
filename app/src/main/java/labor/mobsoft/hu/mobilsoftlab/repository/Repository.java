@@ -21,6 +21,8 @@ public interface Repository {
 
     List<User> getUsers();
 
+    Recipe getRecipe(Long id);
+
     void addRecipe(Recipe recipe);
 
     void removeRecipe(Recipe recipe);

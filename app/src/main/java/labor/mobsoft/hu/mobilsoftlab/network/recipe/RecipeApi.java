@@ -16,4 +16,7 @@ public interface RecipeApi {
     @GET("recipes")
     Call<List<Recipe>> GetRecipes();
 
+    @GET("recipe/{id}")
+    Call<Recipe> GetRecipe(Long id);
+
 }

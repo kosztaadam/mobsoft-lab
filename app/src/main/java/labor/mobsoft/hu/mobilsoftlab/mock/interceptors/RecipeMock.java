@@ -60,7 +60,46 @@ public class RecipeMock implements RecipeApi {
 
         return call;
     }
-    
+
+    @Override
+    public Call<Recipe> GetRecipe(final Long id) {
+        memoryRepository = new MemoryRepository();
+        memoryRepository.open(null);
+
+        Call<Recipe> call = new Call<Recipe>() {
+            @Override
+            public Response<Recipe> execute() throws IOException {
+                return Response.success(memoryRepository.getRecipe(id));
+            }
+
+            @Override
+            public void enqueue(Callback<Recipe> callback) {
+
+            }
+
+            @Override
+            public boolean isExecuted() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+
+            }
+
+            @Override
+            public boolean isCanceled() {
+                return false;
+            }
+
+            @Override
+            public Call<Recipe> clone() {
+                return null;
+            }
+        };
+
+        return call;
+    }
     
 /*    public static Response process(Request request) {
         Uri uri = Uri.parse(request.url().toString());

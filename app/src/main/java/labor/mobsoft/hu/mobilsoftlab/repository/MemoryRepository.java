@@ -50,6 +50,13 @@ public class MemoryRepository implements Repository {
     }
 
     @Override
+    public Recipe getRecipe(Long id) {
+        Recipe recipe = new Recipe();
+        recipe.setId(id);
+        return recipe;
+    }
+
+    @Override
     public void addRecipe(Recipe recipe) {
         recipes.add(recipe);
     }
