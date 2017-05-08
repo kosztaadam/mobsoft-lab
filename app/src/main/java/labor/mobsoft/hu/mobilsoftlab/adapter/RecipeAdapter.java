@@ -3,11 +3,10 @@ package labor.mobsoft.hu.mobilsoftlab.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -40,9 +39,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         Recipe recipe = recipeList.get(position);
 
         holder.tvId.setText(Long.toString(recipe.getId()));
-        holder.tvName.setText(recipe.getTitle());
-        holder.tvType.setText(recipe.getDescription());
-        holder.tvCount.setText(Integer.toString(recipe.getDifficulty()));
+        holder.tvTitle.setText(recipe.getTitle());
+        holder.ratingBar.setRating(recipe.getDifficulty());
+        holder.tvTime.setText(recipe.getTotalTime());
     }
 
     @Override
@@ -53,9 +52,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     protected static class ViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
         public TextView tvId;
-        public TextView tvName;
-        public TextView tvType;
-        public TextView tvCount;
+        public TextView tvTitle;
+        public RatingBar ratingBar;
+        public TextView tvTime;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -63,16 +62,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             itemView.setOnClickListener(this);
 
             tvId = (TextView) itemView.findViewById(R.id.cardrecipe_tvId);
-            tvName = (TextView) itemView.findViewById(R.id.cardrecipe_tvName);
-            tvType = (TextView) itemView.findViewById(R.id.cardrecipe_tvType);
-            tvCount = (TextView) itemView.findViewById(R.id.cardrecipe_tvCount);
-            ImageButton contextMenu = (ImageButton) itemView.findViewById(R.id.cardrecipe_favouriteButton);
-            contextMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //TODO
-                }
-            });
+            tvTitle = (TextView) itemView.findViewById(R.id.cardrecipe_tvTitle);
+            ratingBar = (RatingBar) itemView.findViewById(R.id.rating_difficult);
+            tvTime = (TextView) itemView.findViewById(R.id.cardrecipe_tvTime);
         }
 
         //Navigáció kezelése

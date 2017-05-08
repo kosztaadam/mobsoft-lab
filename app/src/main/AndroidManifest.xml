@@ -23,7 +23,7 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="labor.mobsoft.hu.mobilsoftlab.model" />
 
-        <activity android:name=".ui.list.ListActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,14 +31,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.MainActivity"
-            android:label="List recipes">
+            android:name=".ui.list.ListActivity"
+            android:label="Receptek">
 
         </activity>
 
         <activity
             android:name=".ui.details.RecipeDetailsActivity"
-            android:label="Recipe details">
+            android:label="Recept részletei">
 
         </activity>
     </application>

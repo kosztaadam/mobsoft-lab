@@ -14,58 +14,76 @@
         android:layout_margin="5dp"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/cardrecipe_favouriteButton"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@android:drawable/btn_star"
-            android:background="@android:color/transparent"
-            android:layout_marginLeft="5dp"
-            android:scaleType="fitXY" />
-
         <ImageView
             android:id="@+id/cardrecipe_ivrecipeImage"
-            android:src="@drawable/recipe_default"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_marginRight="10dp"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:src="@drawable/recipe_default" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:layout_toRightOf="@+id/cardrecipe_ivrecipeImage"
-            android:layout_toLeftOf="@+id/cardrecipe_favouriteButton"
+            android:gravity="center_vertical"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/cardrecipe_tvName"
+                android:id="@+id/cardrecipe_tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/cardrecipe_tvType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textColor="#000000"
-                android:textSize="12sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/cardrecipe_tvCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textColor="#000000"
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/cardrecipe_tvRatingTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nehézség: "
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <RatingBar
+                    android:id="@+id/rating_difficult"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/cardrecipe_tvTimeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Elkészítési idő: "
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cardrecipe_tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

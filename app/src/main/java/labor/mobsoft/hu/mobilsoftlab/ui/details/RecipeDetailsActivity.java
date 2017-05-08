@@ -3,6 +3,7 @@ package labor.mobsoft.hu.mobilsoftlab.ui.details;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import javax.inject.Inject;
@@ -14,8 +15,8 @@ import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
 public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDetailsScreen {
 
     TextView title;
-    TextView description;
-    TextView count;
+    RatingBar ratingBar;
+    TextView time;
 
     @Inject
     RecipeDetailsPresenter recipeDeatilsPresenter;
@@ -48,14 +49,14 @@ public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDe
     @Override
     public void showRecipeDetails(Recipe recipe) {
 
-        title = (TextView) findViewById(R.id.cardrecipe_tvType);
+        title = (TextView) findViewById(R.id.cardrecipe_tvTitle);
         title.setText(recipe.getTitle());
 
-        description = (TextView) findViewById(R.id.cardrecipe_tvName);
-        description.setText(recipe.getId().toString());
+        ratingBar = (RatingBar) findViewById(R.id.rating_difficult);
+        ratingBar.setRating(recipe.getDifficulty());
 
-        count = (TextView) findViewById(R.id.cardrecipe_tvCount);
-        description.setText(recipe.getDescription());
+        time = (TextView) findViewById(R.id.cardrecipe_tvTime);
+        time.setText(recipe.getTotalTime());
     }
 
     @Override

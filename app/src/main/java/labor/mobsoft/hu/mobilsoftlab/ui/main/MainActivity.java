@@ -19,8 +19,8 @@ import labor.mobsoft.hu.mobilsoftlab.ui.list.ListActivity;
 
 public class MainActivity extends AppCompatActivity implements MainScreen {
 
-    Button b1;
-    EditText ed1, ed2;
+    Button btnLogin;
+    EditText editName, editPassword;
 
     @Inject
     MainPresenter mainPresenter;
@@ -31,14 +31,14 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        b1 = (Button) findViewById(R.id.button);
-        ed1 = (EditText) findViewById(R.id.editText);
-        ed2 = (EditText) findViewById(R.id.editText2);
+        btnLogin = (Button) findViewById(R.id.btnLogin);
+        editName = (EditText) findViewById(R.id.editName);
+        editPassword = (EditText) findViewById(R.id.editPassword);
 
-        b1.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!ed1.getText().toString().isEmpty() && !ed2.getText().toString().isEmpty()) {
+                if (!editName.getText().toString().isEmpty() && !editPassword.getText().toString().isEmpty()) {
                     mainPresenter.getUsers();
 
                 } else {
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     public void getAuth(List<User> users) {
 
         for (User user : users) {
-            if (ed1.getText().toString().equals(user.getUsername())) {
+            if (editName.getText().toString().toLowerCase().equals(user.getUsername())) {
                 startActivity(new Intent(this, ListActivity.class));
                 return;
             }
