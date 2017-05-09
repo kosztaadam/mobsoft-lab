@@ -3,8 +3,6 @@ package labor.mobsoft.hu.mobilsoftlab.repository;
 import android.content.Context;
 import android.util.Log;
 
-import com.orm.SugarRecord;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,16 +63,20 @@ public class MemoryRepository implements Repository {
     }
 
     @Override
-    public void removeRecipe(Recipe recipe) {
-        recipes.remove(recipe);
+    public void removeRecipe(Long id) {
+
+        for (Recipe item : recipes) {
+            if (item.getId() == id)
+                recipes.remove(item);
+        }
     }
 
     @Override
     public void updateRecipe(Recipe recipe) {
-        for (int i = 0; i < this.recipes.size(); i++) {
+        for (int i = 0; i < recipes.size(); i++) {
             for (Recipe item : recipes) {
                 if (item.getId().equals(recipe.getId())) {
-                    this.recipes.set(i, item);
+                    recipes.set(i, item);
                 }
             }
         }

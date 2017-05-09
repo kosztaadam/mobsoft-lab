@@ -25,7 +25,7 @@ public interface Repository {
 
     void addRecipe(Recipe recipe);
 
-    void removeRecipe(Recipe recipe);
+    void removeRecipe(Long id);
 
     void updateRecipe(Recipe recipe);
 

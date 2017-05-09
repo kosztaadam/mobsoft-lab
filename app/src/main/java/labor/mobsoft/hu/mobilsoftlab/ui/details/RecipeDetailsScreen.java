@@ -12,4 +12,6 @@ public interface RecipeDetailsScreen {
     void showRecipeDetails(Recipe recipe) throws MalformedURLException;
     void deleteRecipe(Recipe recipe);
     void showError(String errorMessage);
+    void listScreen();
+    void editRecipe(Recipe recipe);
 }

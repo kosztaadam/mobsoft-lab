@@ -7,7 +7,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -130,7 +129,7 @@ public class ListActivity extends AppCompatActivity implements ListScreen {
                 repository.deleteAll();
                 listPresenter.refreshList();
                 recipeAdapter.notifyDataSetChanged();
-                Toast.makeText(getApplicationContext(),"Saját receptek törölve!",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Saját receptek törölve!", Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

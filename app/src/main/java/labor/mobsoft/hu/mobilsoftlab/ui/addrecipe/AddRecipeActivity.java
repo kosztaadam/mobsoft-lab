@@ -6,6 +6,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,7 +62,7 @@ public class AddRecipeActivity extends AppCompatActivity implements AddRecipeScr
                 recipe.setDescription(etDescription.getText().toString());
                 recipe.setImgUrl(etImgUrl.getText().toString());
                 recipe.setIngredients(etIngredients.getText().toString());
-                recipe.setDifficulty(ratingBar.getNumStars());
+                recipe.setDifficulty((int) ratingBar.getRating());
 
                 addRecipePresenter.addRecipe(recipe);
             }

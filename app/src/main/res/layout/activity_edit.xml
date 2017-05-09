@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".ui.addrecipe.AddRecipeActivity">
+    tools:context=".ui.editrecipe.EditRecipeActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                     android:paddingTop="10dp">
 
                     <EditText
-                        android:id="@+id/newrecipe_etTitle"
+                        android:id="@+id/editrecipe_etTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Recept neve"
@@ -43,7 +43,7 @@
                     android:paddingTop="10dp">
 
                     <EditText
-                        android:id="@+id/newrecipe_etTotalTime"
+                        android:id="@+id/editrecipe_etTotalTime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Elkészítési idő"
@@ -57,9 +57,9 @@
                     android:layout_marginTop="10dp">
 
                     <EditText
-                        android:id="@+id/newrecipe_etIngredients"
+                        android:id="@+id/editrecipe_etIngredients"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="wrap_content"
                         android:hint="Hozzávalók"
                         android:inputType="textMultiLine" />
 
@@ -71,9 +71,9 @@
                     android:layout_marginTop="10dp">
 
                     <EditText
-                        android:id="@+id/newrecipe_etDescription"
+                        android:id="@+id/editrecipe_etDescription"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         android:hint="Elkészítés módja"
                         android:inputType="textMultiLine" />
 
@@ -86,7 +86,7 @@
                     android:paddingTop="10dp">
 
                     <EditText
-                        android:id="@+id/newrecipe_etImgUrl"
+                        android:id="@+id/editrecipe_etImgUrl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Kép eléréséi útja"
@@ -110,7 +110,7 @@
                         android:textSize="20sp" />
 
                     <RatingBar
-                        android:id="@+id/newrecipe_rating"
+                        android:id="@+id/editrecipe_rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:numStars="5"
@@ -125,14 +125,14 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/newrecipe_btnSave"
+                        android:id="@+id/editrecipe_btnSave"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Mentés" />
 
                     <Button
-                        android:id="@+id/newrecipe_btnCancel"
+                        android:id="@+id/editrecipe_btnCancel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"

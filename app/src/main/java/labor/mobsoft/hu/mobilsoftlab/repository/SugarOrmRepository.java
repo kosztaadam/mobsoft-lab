@@ -1,7 +1,6 @@
 package labor.mobsoft.hu.mobilsoftlab.repository;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.orm.SugarContext;
 import com.orm.SugarRecord;
@@ -51,24 +50,31 @@ public class SugarOrmRepository implements Repository {
     }
 
     @Override
-    public void removeRecipe(Recipe recipe) {
-        SugarRecord.deleteInTx(recipe);
-        Recipe.executeQuery("DELETE FROM SQLITE_SEQUENCE WHERE NAME ='RECIPE'");
-        //Recipe delRecipe = Recipe.findById(Recipe.class, recipe.getId());
-        //delRecipe.delete();
+    public void removeRecipe(Long id) {
+        Recipe delRecipe = Recipe.findById(Recipe.class, id);
+        delRecipe.delete();
+        Recipe.executeQuery("DELETE FROM SQLITE_SEQUENCE WHERE NAME = 'RECIPE'");
     }
 
     @Override
     public void updateRecipe(Recipe newRecipe) {
-        //Recipe recipe = Recipe.findById(Recipe.class, newRecipe.getId());
-        //recipe.setDescription(newRecipe.getDescription());
-        // recipe.save(); // updates the previous entry with new values.
+        Recipe recipe = Recipe.findById(Recipe.class, newRecipe.getId());
+
+        recipe.setDescription(newRecipe.getDescription());
+        recipe.setTotalTime(newRecipe.getTotalTime());
+        recipe.setTitle(newRecipe.getTitle());
+        recipe.setDifficulty(newRecipe.getDifficulty());
+        recipe.setIngredients(newRecipe.getIngredients());
+        recipe.setImgUrl(newRecipe.getImgUrl());
+
+        recipe.save();
         //SugarRecord.update(newRecipe);
     }
 
     @Override
     public void deleteAll() {
         Recipe.deleteAll(Recipe.class);
+        Recipe.executeQuery("DELETE FROM SQLITE_SEQUENCE WHERE NAME = 'RECIPE'");
     }
 
     @Override

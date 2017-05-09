@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.RecipesInteractor;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.GetRecipeEvent;
+import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.RemoveRecipeEvent;
 import labor.mobsoft.hu.mobilsoftlab.ui.Presenter;
 
 /**
@@ -51,7 +52,6 @@ public class RecipeDetailsPresenter extends Presenter<RecipeDetailsScreen> {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                Log.d("asd", "executor: " + id.toString());
                 recipesInteractor.getRecipe(id);
             }
         });
@@ -68,6 +68,30 @@ public class RecipeDetailsPresenter extends Presenter<RecipeDetailsScreen> {
         } else {
             if (screen != null) {
                 screen.showRecipeDetails(event.getRecipe());
+            }
+        }
+    }
+
+    public void removeRecipe(final Long id) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                recipesInteractor.removeRecipe(id);
+            }
+        });
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(RemoveRecipeEvent event) {
+        if (event.getThrowable() != null) {
+            event.getThrowable().printStackTrace();
+            if (screen != null) {
+                screen.showError("error");
+            }
+            Log.e("Networking", "Error reading recipes", event.getThrowable());
+        } else {
+            if (screen != null) {
+                screen.listScreen();
             }
         }
     }

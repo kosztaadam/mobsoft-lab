@@ -52,7 +52,7 @@ public interface RecipeApi {
      */
 
     @DELETE("recipe/delete/{id}")
-    Call<List<Recipe>> DeleteRecipe(
+    Call<List<Recipe>> removeRecipe(
             @Path("id") Long id
     );
 
@@ -63,7 +63,7 @@ public interface RecipeApi {
      */
 
     @POST("recipe/edit")
-    Call<List<Recipe>> EditRecipe(
+    Call<List<Recipe>> editRecipe(
             @Body Recipe body
     );
 

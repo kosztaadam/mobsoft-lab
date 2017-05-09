@@ -48,6 +48,12 @@
             android:label="Recept hozzáadása">
 
         </activity>
+
+        <activity
+            android:name=".ui.editrecipe.EditRecipeActivity"
+            android:label="Recept szerkesztése">
+
+        </activity>
     </application>
 
 </manifest>

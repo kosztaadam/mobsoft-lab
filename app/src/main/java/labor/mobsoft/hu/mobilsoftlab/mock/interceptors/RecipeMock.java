@@ -5,7 +5,6 @@ package labor.mobsoft.hu.mobilsoftlab.mock.interceptors;
  */
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
@@ -21,12 +20,13 @@ public class RecipeMock implements RecipeApi {
 
     private MemoryRepository memoryRepository;
 
-    @Override
-    public Call<List<Recipe>> GetRecipes() {
-        //final List<Recipe> recipeList = new ArrayList<>();
-        //recipeList.add(new Recipe(1L, "Name", "Type", "Url", 1, "not recommended", "asd"));
+    public RecipeMock() {
         memoryRepository = new MemoryRepository();
         memoryRepository.open(null);
+    }
+
+    @Override
+    public Call<List<Recipe>> GetRecipes() {
 
         Call<List<Recipe>> call = new Call<List<Recipe>>() {
             @Override
@@ -65,8 +65,6 @@ public class RecipeMock implements RecipeApi {
 
     @Override
     public Call<Recipe> GetRecipe(final Long id) {
-        memoryRepository = new MemoryRepository();
-        memoryRepository.open(null);
 
         Call<Recipe> call = new Call<Recipe>() {
             @Override
@@ -109,13 +107,84 @@ public class RecipeMock implements RecipeApi {
     }
 
     @Override
-    public Call<List<Recipe>> DeleteRecipe(@Path("id") Long id) {
-        return null;
+    public Call<List<Recipe>> removeRecipe(@Path("id") final Long id) {
+
+        Call<List<Recipe>> call = new Call<List<Recipe>>() {
+
+            @Override
+            public Response<List<Recipe>> execute() throws IOException {
+                memoryRepository.removeRecipe(id);
+                return Response.success(memoryRepository.getRecipes());
+            }
+
+            @Override
+            public void enqueue(Callback<List<Recipe>> callback) {
+
+            }
+
+            @Override
+            public boolean isExecuted() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+
+            }
+
+            @Override
+            public boolean isCanceled() {
+                return false;
+            }
+
+            @Override
+            public Call<List<Recipe>> clone() {
+                return null;
+            }
+        };
+
+        return call;
     }
 
     @Override
-    public Call<List<Recipe>> EditRecipe(@Body Recipe body) {
-        return null;
+    public Call<List<Recipe>> editRecipe(@Body final Recipe body) {
+
+        Call<List<Recipe>> call = new Call<List<Recipe>>() {
+
+            @Override
+            public Response<List<Recipe>> execute() throws IOException {
+                memoryRepository.updateRecipe(body);
+                return Response.success(memoryRepository.getRecipes());
+            }
+
+            @Override
+            public void enqueue(Callback<List<Recipe>> callback) {
+
+            }
+
+            @Override
+            public boolean isExecuted() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+
+            }
+
+            @Override
+            public boolean isCanceled() {
+                return false;
+            }
+
+            @Override
+            public Call<List<Recipe>> clone() {
+                return null;
+            }
+        };
+
+        return call;
+
     }
 
 }

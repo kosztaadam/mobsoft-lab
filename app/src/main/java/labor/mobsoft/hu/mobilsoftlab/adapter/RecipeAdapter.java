@@ -73,7 +73,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), RecipeDetailsActivity.class);
             intent.putExtra("id", tvId.getText());
-            Log.d("asd", "start detail, id: " + tvId.getText().toString());
             v.getContext().startActivity(intent);
         }
     }

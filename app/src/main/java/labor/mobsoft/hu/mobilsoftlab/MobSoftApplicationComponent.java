@@ -14,6 +14,7 @@ import labor.mobsoft.hu.mobilsoftlab.ui.addrecipe.AddRecipePresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.details.RecipeDetailsActivity;
 import labor.mobsoft.hu.mobilsoftlab.ui.details.RecipeDetailsPresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.editrecipe.EditRecipeActivity;
+import labor.mobsoft.hu.mobilsoftlab.ui.editrecipe.EditRecipePresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.list.ListActivity;
 import labor.mobsoft.hu.mobilsoftlab.ui.list.ListPresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.main.MainActivity;
@@ -39,6 +40,8 @@ public interface MobSoftApplicationComponent {
     void inject(AddRecipePresenter addRecipePresenter);
 
     void inject(EditRecipeActivity editRecipeActivity);
+
+    void inject(EditRecipePresenter editRecipePresenter);
 
     void inject(RecipeDetailsActivity recipeDetailsActivity);
 

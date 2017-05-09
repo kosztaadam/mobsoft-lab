@@ -1,6 +1,8 @@
 package labor.mobsoft.hu.mobilsoftlab.interactor.recipe;
 
 
+import android.util.Log;
+
 import com.orm.SugarRecord;
 
 import org.greenrobot.eventbus.EventBus;
@@ -11,8 +13,10 @@ import javax.inject.Inject;
 
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.AddRecipeEvent;
+import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.EditRecipeEvent;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.GetRecipeEvent;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.GetRecipesEvent;
+import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.RemoveRecipeEvent;
 import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
 import labor.mobsoft.hu.mobilsoftlab.network.recipe.RecipeApi;
 import labor.mobsoft.hu.mobilsoftlab.repository.Repository;
@@ -92,6 +96,44 @@ public class RecipesInteractor {
             Recipe recipe_net = response.body();
             Recipe recipe = repository.getRecipe(recipe_net.getId());
             event.setRecipe(recipe);
+            bus.post(event);
+        } catch (Exception e) {
+            event.setThrowable(e);
+            bus.post(event);
+        }
+    }
+
+    public void removeRecipe(Long id) {
+        Call<List<Recipe>> queryCall = recipeApi.removeRecipe(id);
+
+        RemoveRecipeEvent event = new RemoveRecipeEvent();
+        try {
+            Response<List<Recipe>> response = queryCall.execute();
+            if (response.code() != 200) {
+                throw new Exception("Something went wrong!");
+            }
+            event.setCode(response.code());
+            repository.removeRecipe(id);
+            Recipe recipe = new Recipe();
+            event.setRecipe(recipe);
+            bus.post(event);
+        } catch (Exception e) {
+            event.setThrowable(e);
+            bus.post(event);
+        }
+    }
+
+    public void editRecipe(Recipe recipe) {
+        Call<List<Recipe>> queryCall = recipeApi.editRecipe(recipe);
+
+        EditRecipeEvent event = new EditRecipeEvent();
+        try {
+            Response<List<Recipe>> response = queryCall.execute();
+            if (response.code() != 200) {
+                throw new Exception("Something went wrong!");
+            }
+            event.setCode(response.code());
+            repository.updateRecipe(recipe);
             bus.post(event);
         } catch (Exception e) {
             event.setThrowable(e);
