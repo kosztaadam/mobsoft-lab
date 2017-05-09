@@ -1,5 +1,6 @@
 package labor.mobsoft.hu.mobilsoftlab.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 import com.orm.dsl.Table;
 
@@ -9,7 +10,9 @@ import com.orm.dsl.Table;
 
 @Table
 public class Recipe extends SugarRecord {
+    @SerializedName("id")
     private Long id;
+
     private String title;
     private String imgUrl;
     private String totalTime;

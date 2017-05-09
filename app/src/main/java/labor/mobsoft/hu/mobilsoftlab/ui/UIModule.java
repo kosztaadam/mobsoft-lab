@@ -2,6 +2,8 @@ package labor.mobsoft.hu.mobilsoftlab.ui;
 
 import android.content.Context;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -9,7 +11,6 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import de.greenrobot.event.EventBus;
 import labor.mobsoft.hu.mobilsoftlab.ui.addrecipe.AddRecipePresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.details.RecipeDetailsPresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.editrecipe.EditRecipePresenter;
