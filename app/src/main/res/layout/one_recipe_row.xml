@@ -49,8 +49,7 @@
                     android:layout_height="wrap_content"
                     android:text="Nehézség: "
                     android:textColor="#000000"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp" />
 
                 <RatingBar
                     android:id="@+id/rating_difficult"
@@ -73,15 +72,14 @@
                     android:layout_height="wrap_content"
                     android:text="Elkészítési idő: "
                     android:textColor="#000000"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/cardrecipe_tvTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 

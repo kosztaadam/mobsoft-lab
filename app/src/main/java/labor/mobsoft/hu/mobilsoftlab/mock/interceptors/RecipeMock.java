@@ -14,6 +14,8 @@ import labor.mobsoft.hu.mobilsoftlab.repository.MemoryRepository;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Body;
+import retrofit2.http.Path;
 
 public class RecipeMock implements RecipeApi {
 
@@ -100,33 +102,20 @@ public class RecipeMock implements RecipeApi {
 
         return call;
     }
-    
-/*    public static Response process(Request request) {
-        Uri uri = Uri.parse(request.url().toString());
 
-        String responseString;
-        int responseCode;
-        Headers headers = request.headers();
+    @Override
+    public Call<List<Recipe>> recipePost(@Body Recipe body) {
+        return null;
+    }
 
+    @Override
+    public Call<List<Recipe>> DeleteRecipe(@Path("id") Long id) {
+        return null;
+    }
 
-        if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "todo/favourite") && request.method().equals("POST")) {
-            responseString = "";
-            responseCode = 200;
+    @Override
+    public Call<List<Recipe>> EditRecipe(@Body Recipe body) {
+        return null;
+    }
 
-            *//**
-     * Simple Get Example
-     *//*
-            *//*
-        }else if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "Todos") && request.method().equals("Get")) {
-			MemoryRepository memoryRepository = new MemoryRepository();
-			memoryRepository.open(null);
-			responseString = GsonHelper.getGson().toJson(memoryRepository.getFavourites());
-			responseCode = 200;*//*
-        } else {
-            responseString = "ERROR";
-            responseCode = 503;
-        }
-
-        return makeResponse(request, headers, responseCode, responseString);
-    }*/
 }

@@ -3,11 +3,14 @@ package labor.mobsoft.hu.mobilsoftlab.ui.addrecipe;
 import android.util.Log;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
+import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.RecipesInteractor;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.GetRecipesEvent;
 import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
@@ -31,11 +34,14 @@ public class AddRecipePresenter extends Presenter<AddRecipeScreen> {
     @Override
     public void attachScreen(AddRecipeScreen screen) {
         super.attachScreen(screen);
+        MobSoftApplication.injector.inject(this);
+        bus.register(this);
     }
 
     @Override
     public void detachScreen() {
         super.detachScreen();
+        bus.unregister(this);
     }
 
     public void addRecipe(final Recipe recipe) {
@@ -47,6 +53,7 @@ public class AddRecipePresenter extends Presenter<AddRecipeScreen> {
         });
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(GetRecipesEvent event) {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
@@ -57,7 +64,7 @@ public class AddRecipePresenter extends Presenter<AddRecipeScreen> {
         } else {
             if (screen != null) {
                 for(Recipe r : event.getRecipes()){
-                    screen.showMessage(r.getTitle());;
+                    screen.showMessage(r.getTitle());
                 }
             }
         }

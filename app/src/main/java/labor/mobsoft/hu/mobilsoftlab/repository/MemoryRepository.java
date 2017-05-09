@@ -1,6 +1,9 @@
 package labor.mobsoft.hu.mobilsoftlab.repository;
 
 import android.content.Context;
+import android.util.Log;
+
+import com.orm.SugarRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +22,8 @@ public class MemoryRepository implements Repository {
 
     @Override
     public void open(Context context) {
-        Recipe recipe1 = new Recipe(1L, "Paprikas krumpli", "img", "30 perc", 3, "krumpli, pirospaprika", "Tegyuk egy labasba a krumplit...");
-        Recipe recipe2 = new Recipe(2L, "Husleves", "img2", "60 perc", 3, "hus, leveskocka, so, bors", "Tegyuk egy labasba a hust...");
+        Recipe recipe1 = new Recipe(1L, "Paprikas krumpli", "http://www.mindmegette.hu/images/16/O/23936_kolbaszos-paprikas-krumpli_n-201510170539.jpg", "30 perc", 3, "krumpli, pirospaprika", "Tegyuk egy labasba a krumplit...");
+        Recipe recipe2 = new Recipe(2L, "Husleves", "http://www.men.hu/wp-content/uploads/2013/03/485_bigger.jpg", "60 perc", 2, "hus, leveskocka, so, bors", "Tegyuk egy labasba a hust...");
 
         recipes = new ArrayList<>();
         recipes.add(recipe1);
@@ -75,6 +78,11 @@ public class MemoryRepository implements Repository {
                 }
             }
         }
+    }
+
+    @Override
+    public void deleteAll() {
+        recipes.clear();
     }
 
 }

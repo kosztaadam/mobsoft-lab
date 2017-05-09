@@ -6,6 +6,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.net.MalformedURLException;
 import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
@@ -13,7 +14,6 @@ import javax.inject.Inject;
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.RecipesInteractor;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.GetRecipeEvent;
-import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.GetRecipesEvent;
 import labor.mobsoft.hu.mobilsoftlab.ui.Presenter;
 
 /**
@@ -51,13 +51,14 @@ public class RecipeDetailsPresenter extends Presenter<RecipeDetailsScreen> {
         executor.execute(new Runnable() {
             @Override
             public void run() {
+                Log.d("asd", "executor: " + id.toString());
                 recipesInteractor.getRecipe(id);
             }
         });
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEventMainThread(GetRecipeEvent event) {
+    public void onEventMainThread(GetRecipeEvent event) throws MalformedURLException {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {

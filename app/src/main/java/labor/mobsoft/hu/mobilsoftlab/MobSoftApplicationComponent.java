@@ -10,6 +10,7 @@ import labor.mobsoft.hu.mobilsoftlab.mock.MockNetworkModule;
 import labor.mobsoft.hu.mobilsoftlab.repository.RepositoryModule;
 import labor.mobsoft.hu.mobilsoftlab.ui.UIModule;
 import labor.mobsoft.hu.mobilsoftlab.ui.addrecipe.AddRecipeActivity;
+import labor.mobsoft.hu.mobilsoftlab.ui.addrecipe.AddRecipePresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.details.RecipeDetailsActivity;
 import labor.mobsoft.hu.mobilsoftlab.ui.details.RecipeDetailsPresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.editrecipe.EditRecipeActivity;
@@ -34,6 +35,8 @@ public interface MobSoftApplicationComponent {
     void inject(ListPresenter listPresenter);
 
     void inject(AddRecipeActivity addRecipeActivity);
+
+    void inject(AddRecipePresenter addRecipePresenter);
 
     void inject(EditRecipeActivity editRecipeActivity);
 

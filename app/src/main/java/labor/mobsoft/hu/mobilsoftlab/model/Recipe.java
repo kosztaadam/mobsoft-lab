@@ -1,15 +1,16 @@
 package labor.mobsoft.hu.mobilsoftlab.model;
 
 import com.orm.SugarRecord;
-import com.orm.dsl.Table;
+import com.orm.dsl.Unique;
 
 /**
  * Created by Koszta Ádám on 2017. 04. 18..
  */
 
-@Table
 public class Recipe extends SugarRecord {
+    @Unique
     private Long id;
+
     private String title;
     private String imgUrl;
     private String totalTime;

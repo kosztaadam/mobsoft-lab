@@ -29,4 +29,6 @@ public interface Repository {
 
     void updateRecipe(Recipe recipe);
 
+    void deleteAll();
+
 }

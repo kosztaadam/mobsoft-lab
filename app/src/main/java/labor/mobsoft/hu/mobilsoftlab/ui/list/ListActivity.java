@@ -1,10 +1,15 @@
 package labor.mobsoft.hu.mobilsoftlab.ui.list;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +23,8 @@ import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.R;
 import labor.mobsoft.hu.mobilsoftlab.adapter.RecipeAdapter;
 import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
+import labor.mobsoft.hu.mobilsoftlab.repository.Repository;
+import labor.mobsoft.hu.mobilsoftlab.ui.addrecipe.AddRecipeActivity;
 
 public class ListActivity extends AppCompatActivity implements ListScreen {
 
@@ -29,6 +36,9 @@ public class ListActivity extends AppCompatActivity implements ListScreen {
 
     @Inject
     ListPresenter listPresenter;
+
+    @Inject
+    Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +62,13 @@ public class ListActivity extends AppCompatActivity implements ListScreen {
             @Override
             public void onRefresh() {
                 listPresenter.refreshList();
+            }
+        });
+
+        FloatingActionButton addBtn = (FloatingActionButton) findViewById(R.id.addRecipeBtn);
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                addRecipe();
             }
         });
 
@@ -93,6 +110,31 @@ public class ListActivity extends AppCompatActivity implements ListScreen {
         this.recipeList.clear();
         this.recipeList.addAll(recipes);
         recipeAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void addRecipe() {
+        startActivity(new Intent(this, AddRecipeActivity.class));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.deleteAll:
+                repository.deleteAll();
+                listPresenter.refreshList();
+                recipeAdapter.notifyDataSetChanged();
+                Toast.makeText(getApplicationContext(),"Saját receptek törölve!",Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

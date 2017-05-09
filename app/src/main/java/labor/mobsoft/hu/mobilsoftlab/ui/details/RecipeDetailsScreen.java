@@ -1,5 +1,7 @@
 package labor.mobsoft.hu.mobilsoftlab.ui.details;
 
+import java.net.MalformedURLException;
+
 import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
 
 /**
@@ -7,7 +9,7 @@ import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
  */
 
 public interface RecipeDetailsScreen {
-    void showRecipeDetails(Recipe recipe);
+    void showRecipeDetails(Recipe recipe) throws MalformedURLException;
     void deleteRecipe(Recipe recipe);
     void showError(String errorMessage);
 }

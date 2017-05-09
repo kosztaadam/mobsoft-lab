@@ -3,7 +3,6 @@ package labor.mobsoft.hu.mobilsoftlab.repository;
 import android.content.Context;
 
 import com.orm.SugarContext;
-import com.orm.SugarRecord;
 
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class SugarOrmRepository implements Repository {
 
     @Override
     public List<Recipe> getRecipes() {
-        return SugarRecord.listAll(Recipe.class);
+        return Recipe.listAll(Recipe.class);
     }
 
     @Override
@@ -38,9 +37,9 @@ public class SugarOrmRepository implements Repository {
 
     @Override
     public void addRecipe(Recipe recipe) {
-        //SugarRecord.saveInTx(recipe);
         recipe.save();
     }
+
     @Override
     public void removeRecipe(Recipe recipe) {
         //SugarRecord.deleteInTx(id);
@@ -50,14 +49,20 @@ public class SugarOrmRepository implements Repository {
 
     @Override
     public void updateRecipe(Recipe newRecipe) {
-        Recipe recipe = Recipe.findById(Recipe.class, 1);
-        recipe.setDescription(newRecipe.getDescription());
-        recipe.save(); // updates the previous entry with new values.
+        //Recipe recipe = Recipe.findById(Recipe.class, newRecipe.getId());
+        //recipe.setDescription(newRecipe.getDescription());
+        // recipe.save(); // updates the previous entry with new values.
+        //SugarRecord.update(newRecipe);
+    }
+
+    @Override
+    public void deleteAll() {
+        Recipe.deleteAll(Recipe.class);
     }
 
     @Override
     public Recipe getRecipe(Long id) {
-        return SugarRecord.findById(Recipe.class, id);
+        return Recipe.findById(Recipe.class, id);
     }
 
 }

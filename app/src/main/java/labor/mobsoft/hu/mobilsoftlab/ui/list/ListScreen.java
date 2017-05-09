@@ -11,4 +11,5 @@ import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
 public interface ListScreen {
     void showMessage(String text);
     void listRecipes(List<Recipe> recipes);
+    void addRecipe();
 }
