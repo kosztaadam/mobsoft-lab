@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.interactor.login.LoginInteractor;
 import labor.mobsoft.hu.mobilsoftlab.interactor.login.event.GetUsersEvent;
+import labor.mobsoft.hu.mobilsoftlab.model.User;
 import labor.mobsoft.hu.mobilsoftlab.ui.Presenter;
 
 /**
@@ -64,6 +65,9 @@ public class MainPresenter extends Presenter<MainScreen> {
         } else {
             if (screen != null) {
                 screen.getAuth(event.getUsers());
+                /*for(User t : event.getUsers()){
+                    screen.showMessage(t.getUsername());
+                }*/
             }
         }
     }

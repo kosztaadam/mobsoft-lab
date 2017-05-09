@@ -67,7 +67,8 @@ public class RecipeDetailsPresenter extends Presenter<RecipeDetailsScreen> {
             Log.e("Networking", "Error reading recipes", event.getThrowable());
         } else {
             if (screen != null) {
-                screen.showRecipeDetails(event.getRecipe());
+                //screen.showRecipeDetails(event.getRecipe());
+                screen.showError(event.getRecipe().getTitle());
             }
         }
     }

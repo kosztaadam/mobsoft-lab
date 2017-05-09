@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.RecipesInteractor;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.GetRecipesEvent;
+import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
 import labor.mobsoft.hu.mobilsoftlab.ui.Presenter;
 
 /**
@@ -63,6 +64,9 @@ public class ListPresenter extends Presenter<ListScreen> {
         } else {
             if (screen != null) {
                 screen.listRecipes(event.getRecipes());
+                /*for(Recipe r : event.getRecipes()) {
+                    screen.showMessage(r.getTitle());
+                }*/
             }
         }
     }
