@@ -1,14 +1,16 @@
 package labor.mobsoft.hu.mobilsoftlab.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
-import com.orm.dsl.Unique;
+import com.orm.dsl.Table;
 
 /**
  * Created by Koszta Ádám on 2017. 04. 18..
  */
 
+@Table
 public class Recipe extends SugarRecord {
-    @Unique
+    @SerializedName("id")
     private Long id;
 
     private String title;

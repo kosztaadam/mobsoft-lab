@@ -1,8 +1,11 @@
 package labor.mobsoft.hu.mobilsoftlab.repository;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.orm.SugarContext;
+import com.orm.SugarRecord;
+import com.orm.util.NamingHelper;
 
 import java.util.List;
 
@@ -37,14 +40,22 @@ public class SugarOrmRepository implements Repository {
 
     @Override
     public void addRecipe(Recipe recipe) {
-        recipe.save();
+        List<Recipe> ownRecipes = SugarRecord.find(
+                Recipe.class,
+                NamingHelper.toSQLNameDefault("id") + " = ?", recipe.getId().toString()
+        );
+
+        if (ownRecipes.size() == 0) {
+            recipe.save();
+        }
     }
 
     @Override
     public void removeRecipe(Recipe recipe) {
-        //SugarRecord.deleteInTx(id);
-        Recipe delRecipe = Recipe.findById(Recipe.class, recipe.getId());
-        delRecipe.delete();
+        SugarRecord.deleteInTx(recipe);
+        Recipe.executeQuery("DELETE FROM SQLITE_SEQUENCE WHERE NAME ='RECIPE'");
+        //Recipe delRecipe = Recipe.findById(Recipe.class, recipe.getId());
+        //delRecipe.delete();
     }
 
     @Override

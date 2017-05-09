@@ -7,6 +7,6 @@ import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
  */
 
 public interface AddRecipeScreen {
-    void addRecipe(Recipe recipe);
     void showMessage(String errorMessage);
+    void addRecipe();
 }

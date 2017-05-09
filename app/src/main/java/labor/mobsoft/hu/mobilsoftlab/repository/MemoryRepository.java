@@ -30,7 +30,7 @@ public class MemoryRepository implements Repository {
         recipes.add(recipe2);
 
         User user1 = new User(1L, "bela");
-        User user2 = new User(1L, "adam");
+        User user2 = new User(2L, "adam");
 
         users = new ArrayList<>();
         users.add(user1);

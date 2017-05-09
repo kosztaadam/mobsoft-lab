@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.RecipesInteractor;
+import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.AddRecipeEvent;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.events.GetRecipesEvent;
 import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
 import labor.mobsoft.hu.mobilsoftlab.ui.Presenter;
@@ -54,7 +55,7 @@ public class AddRecipePresenter extends Presenter<AddRecipeScreen> {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEventMainThread(GetRecipesEvent event) {
+    public void onEventMainThread(AddRecipeEvent event) {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {
@@ -63,9 +64,8 @@ public class AddRecipePresenter extends Presenter<AddRecipeScreen> {
             Log.e("Networking", "Error reading recipes", event.getThrowable());
         } else {
             if (screen != null) {
-                for(Recipe r : event.getRecipes()){
-                    screen.showMessage(r.getTitle());
-                }
+                screen.showMessage("Elem sikeresen hozzáadva!");
+                screen.addRecipe();
             }
         }
     }

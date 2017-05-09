@@ -1,6 +1,8 @@
 package labor.mobsoft.hu.mobilsoftlab.interactor.recipe;
 
 
+import com.orm.SugarRecord;
+
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
@@ -40,6 +42,9 @@ public class RecipesInteractor {
         AddRecipeEvent event = new AddRecipeEvent();
         event.setRecipe(recipe);
         try {
+            List<Recipe> recipes = repository.getRecipes();
+            int newId = recipes.size() + 1;
+            recipe.setId((long) newId);
             repository.addRecipe(recipe);
             bus.post(event);
         } catch (Exception e) {
@@ -59,12 +64,14 @@ public class RecipesInteractor {
             }
             event.setCode(response.code());
             List<Recipe> recipes = response.body();
+
             //SugarRecord.saveInTx(recipes);
 
             for (Recipe item : recipes) {
                 repository.addRecipe(item);
             }
-            event.setRecipes(recipes);
+
+            event.setRecipes(SugarRecord.listAll(Recipe.class));
             bus.post(event);
         } catch (Exception e) {
             event.setThrowable(e);
