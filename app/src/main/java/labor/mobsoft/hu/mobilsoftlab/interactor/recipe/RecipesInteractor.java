@@ -69,11 +69,12 @@ public class RecipesInteractor {
             event.setCode(response.code());
             List<Recipe> recipes = response.body();
 
-            //SugarRecord.saveInTx(recipes);
+            SugarRecord.saveInTx(recipes);
 
+            /*
             for (Recipe item : recipes) {
                 repository.addRecipe(item);
-            }
+            }*/
 
             event.setRecipes(SugarRecord.listAll(Recipe.class));
             bus.post(event);

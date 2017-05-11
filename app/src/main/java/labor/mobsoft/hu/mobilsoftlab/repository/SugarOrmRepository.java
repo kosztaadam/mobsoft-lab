@@ -1,6 +1,7 @@
 package labor.mobsoft.hu.mobilsoftlab.repository;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.orm.SugarContext;
 import com.orm.SugarRecord;
@@ -39,6 +40,7 @@ public class SugarOrmRepository implements Repository {
 
     @Override
     public void addRecipe(Recipe recipe) {
+
         List<Recipe> ownRecipes = SugarRecord.find(
                 Recipe.class,
                 NamingHelper.toSQLNameDefault("id") + " = ?", recipe.getId().toString()
@@ -79,6 +81,7 @@ public class SugarOrmRepository implements Repository {
 
     @Override
     public Recipe getRecipe(Long id) {
+
         return Recipe.findById(Recipe.class, id);
     }
 

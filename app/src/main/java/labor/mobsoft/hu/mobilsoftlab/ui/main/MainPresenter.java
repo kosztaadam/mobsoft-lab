@@ -65,9 +65,9 @@ public class MainPresenter extends Presenter<MainScreen> {
         } else {
             if (screen != null) {
                 screen.getAuth(event.getUsers());
-                /*for(User t : event.getUsers()){
+                for(User t : event.getUsers()){
                     screen.showMessage(t.getUsername());
-                }*/
+                }
             }
         }
     }

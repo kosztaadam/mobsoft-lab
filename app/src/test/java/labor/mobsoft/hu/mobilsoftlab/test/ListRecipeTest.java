@@ -28,7 +28,7 @@ import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 @RunWith(RobolectricDaggerTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
-public class ListTest {
+public class ListRecipeTest {
 
     private ListPresenter listPresenter;
 
