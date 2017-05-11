@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "309363334137",
+    "project_id": "cookbook-1fc35"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309363334137:android:e0e0a22d5a1f143d",
+        "android_client_info": {
+          "package_name": "labor.mobsoft.hu.mobilsoftlab"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnqvvjDa19mBuHzfNS8d8xFY0zgjch1Y4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-98969794-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

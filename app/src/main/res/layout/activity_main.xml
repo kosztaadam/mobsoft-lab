@@ -63,4 +63,11 @@
         android:layout_centerInParent="true"
         android:text="Bejelentkezés" />
 
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Crash!"
+        android:onClick="forceCrash"
+        android:layout_alignParentBottom="true" />
+
 </RelativeLayout>

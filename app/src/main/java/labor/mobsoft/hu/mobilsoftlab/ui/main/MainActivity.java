@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,6 +20,9 @@ import labor.mobsoft.hu.mobilsoftlab.R;
 import labor.mobsoft.hu.mobilsoftlab.model.User;
 import labor.mobsoft.hu.mobilsoftlab.ui.list.ListActivity;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
+
 public class MainActivity extends AppCompatActivity implements MainScreen {
 
     Button btnLogin;
@@ -24,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
 
     @Inject
     MainPresenter mainPresenter;
+
+    private Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +55,21 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
                 }
             }
         });
+
+        // Obtain the shared Tracker instance.
+        MobSoftApplication application = (MobSoftApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+
+        Fabric.with(this, new Crashlytics());
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         mainPresenter.attachScreen(this);
+
+        mTracker.setScreenName("Image~MainActivity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override
@@ -79,5 +96,9 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
 
         Toast.makeText(this, "Helytelen felhasznalonev vagy jelszo!", Toast.LENGTH_SHORT).show();
 
+    }
+
+    public void forceCrash(View view) {
+        throw new RuntimeException("This is a crash");
     }
 }
