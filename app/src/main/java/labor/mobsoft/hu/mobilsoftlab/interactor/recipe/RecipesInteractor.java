@@ -1,8 +1,6 @@
 package labor.mobsoft.hu.mobilsoftlab.interactor.recipe;
 
 
-import android.util.Log;
-
 import com.orm.SugarRecord;
 
 import org.greenrobot.eventbus.EventBus;
@@ -43,13 +41,20 @@ public class RecipesInteractor {
     }
 
     public void addRecipe(Recipe recipe) {
+        Call<List<Recipe>> queryCall = recipeApi.addRecipe(recipe);
+
         AddRecipeEvent event = new AddRecipeEvent();
-        event.setRecipe(recipe);
         try {
-            List<Recipe> recipes = repository.getRecipes();
-            int newId = recipes.size() + 1;
-            recipe.setId((long) newId);
+            Response<List<Recipe>> response = queryCall.execute();
+            if (response.code() != 200) {
+                throw new Exception("Something went wrong!");
+            }
+
+            // List<Recipe> recipes = repository.getRecipes();
+            // int newId = recipes.size() + 1;
+            // recipe.setId((long) newId);
             repository.addRecipe(recipe);
+            event.setRecipe(recipe);
             bus.post(event);
         } catch (Exception e) {
             event.setThrowable(e);
@@ -70,7 +75,6 @@ public class RecipesInteractor {
             List<Recipe> recipes = response.body();
 
             SugarRecord.saveInTx(recipes);
-
             /*
             for (Recipe item : recipes) {
                 repository.addRecipe(item);
@@ -94,8 +98,7 @@ public class RecipesInteractor {
                 throw new Exception("Something went wrong!");
             }
             event.setCode(response.code());
-            Recipe recipe_net = response.body();
-            Recipe recipe = repository.getRecipe(recipe_net.getId());
+            Recipe recipe = repository.getRecipe(response.body().getId());
             event.setRecipe(recipe);
             bus.post(event);
         } catch (Exception e) {

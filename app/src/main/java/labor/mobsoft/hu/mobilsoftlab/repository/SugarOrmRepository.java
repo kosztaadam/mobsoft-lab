@@ -30,7 +30,7 @@ public class SugarOrmRepository implements Repository {
 
     @Override
     public List<Recipe> getRecipes() {
-        return Recipe.listAll(Recipe.class);
+        return SugarRecord.listAll(Recipe.class);
     }
 
     @Override
@@ -41,26 +41,30 @@ public class SugarOrmRepository implements Repository {
     @Override
     public void addRecipe(Recipe recipe) {
 
-        List<Recipe> ownRecipes = SugarRecord.find(
+       /* List<Recipe> ownRecipes = SugarRecord.find(
                 Recipe.class,
                 NamingHelper.toSQLNameDefault("id") + " = ?", recipe.getId().toString()
         );
 
         if (ownRecipes.size() == 0) {
             recipe.save();
-        }
+        }*/
+
+        SugarRecord.save(recipe);
     }
 
     @Override
     public void removeRecipe(Long id) {
-        Recipe delRecipe = Recipe.findById(Recipe.class, id);
-        delRecipe.delete();
-        Recipe.executeQuery("DELETE FROM SQLITE_SEQUENCE WHERE NAME = 'RECIPE'");
+        //Recipe delRecipe = Recipe.findById(Recipe.class, id);
+        //delRecipe.delete();
+        //Recipe.executeQuery("DELETE FROM SQLITE_SEQUENCE WHERE NAME = 'RECIPE'");
+        Recipe recipe = SugarRecord.findById(Recipe.class, id);
+        SugarRecord.delete(recipe);
     }
 
     @Override
     public void updateRecipe(Recipe newRecipe) {
-        Recipe recipe = Recipe.findById(Recipe.class, newRecipe.getId());
+        /*Recipe recipe = Recipe.findById(Recipe.class, newRecipe.getId());
 
         recipe.setDescription(newRecipe.getDescription());
         recipe.setTotalTime(newRecipe.getTotalTime());
@@ -69,20 +73,22 @@ public class SugarOrmRepository implements Repository {
         recipe.setIngredients(newRecipe.getIngredients());
         recipe.setImgUrl(newRecipe.getImgUrl());
 
-        recipe.save();
-        //SugarRecord.update(newRecipe);
+        recipe.save();*/
+        SugarRecord.save(newRecipe);
     }
 
     @Override
     public void deleteAll() {
-        Recipe.deleteAll(Recipe.class);
-        Recipe.executeQuery("DELETE FROM SQLITE_SEQUENCE WHERE NAME = 'RECIPE'");
+        //Recipe.deleteAll(Recipe.class);
+        //Recipe.executeQuery("DELETE FROM SQLITE_SEQUENCE WHERE NAME = 'RECIPE'");
+        SugarRecord.deleteAll(Recipe.class);
     }
 
     @Override
     public Recipe getRecipe(Long id) {
 
-        return Recipe.findById(Recipe.class, id);
+        //return Recipe.findById(Recipe.class, id);
+        return SugarRecord.findById(Recipe.class, id);
     }
 
 }

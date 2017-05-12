@@ -11,6 +11,7 @@ import java.util.List;
 
 
 import labor.mobsoft.hu.mobilsoftlab.BuildConfig;
+import labor.mobsoft.hu.mobilsoftlab.model.User;
 import labor.mobsoft.hu.mobilsoftlab.ui.main.MainPresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.main.MainScreen;
 import labor.mobsoft.hu.mobilsoftlab.utils.RobolectricDaggerTestRunner;
@@ -43,12 +44,12 @@ public class UserTest {
         mainPresenter.attachScreen(mainScreen);
         mainPresenter.getUsers();
 
-        ArgumentCaptor<String> userCaptor = ArgumentCaptor.forClass(String.class);
-        verify(mainScreen, times(2)).showMessage(userCaptor.capture());
+        ArgumentCaptor<List> userCaptor = ArgumentCaptor.forClass(List.class);
+        verify(mainScreen, times(1)).getAuth(userCaptor.capture());
 
-        List<String> capturedUsers = userCaptor.getAllValues();
-        assertEquals("bela", capturedUsers.get(0));
-        assertEquals("adam", capturedUsers.get(1));
+        List<User> capturedUsers = userCaptor.getValue();
+        assertEquals("bela", capturedUsers.get(0).getUsername());
+        assertEquals("adam", capturedUsers.get(1).getUsername());
     }
 
 

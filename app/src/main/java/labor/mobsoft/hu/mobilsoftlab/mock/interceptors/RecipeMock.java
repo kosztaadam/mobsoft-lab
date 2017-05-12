@@ -102,8 +102,42 @@ public class RecipeMock implements RecipeApi {
     }
 
     @Override
-    public Call<List<Recipe>> recipePost(@Body Recipe body) {
-        return null;
+    public Call<List<Recipe>> addRecipe(@Body final Recipe body) {
+        Call<List<Recipe>> call = new Call<List<Recipe>>() {
+
+            @Override
+            public Response<List<Recipe>> execute() throws IOException {
+                memoryRepository.addRecipe(body);
+                return Response.success(memoryRepository.getRecipes());
+            }
+
+            @Override
+            public void enqueue(Callback<List<Recipe>> callback) {
+
+            }
+
+            @Override
+            public boolean isExecuted() {
+                return false;
+            }
+
+            @Override
+            public void cancel() {
+
+            }
+
+            @Override
+            public boolean isCanceled() {
+                return false;
+            }
+
+            @Override
+            public Call<List<Recipe>> clone() {
+                return null;
+            }
+        };
+
+        return call;
     }
 
     @Override

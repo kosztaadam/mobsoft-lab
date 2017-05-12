@@ -94,7 +94,7 @@ public class AddEditRemoveRecipeTest {
         recipeDetailsPresenter.removeRecipe(1L);
 
         ArgumentCaptor<String> userCaptor = ArgumentCaptor.forClass(String.class);
-        verify(recipeDetailsScreen, times(1)).showError(userCaptor.capture());
+        verify(recipeDetailsScreen, times(1)).showMessage(userCaptor.capture());
 
         List<String> capturedText = userCaptor.getAllValues();
         assertEquals("Elem sikeresen torolve!", capturedText.get(0));
@@ -104,6 +104,7 @@ public class AddEditRemoveRecipeTest {
     public void tearDown() {
         addRecipePresenter.detachScreen();
         recipeDetailsPresenter.detachScreen();
+        editRecipePresenter.detachScreen();
     }
 
 }

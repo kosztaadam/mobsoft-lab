@@ -110,7 +110,7 @@ public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDe
 
 
     @Override
-    public void showError(String errorMessage) {
+    public void showMessage(String errorMessage) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 

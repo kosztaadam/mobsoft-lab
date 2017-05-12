@@ -7,6 +7,7 @@ import labor.mobsoft.hu.mobilsoftlab.interactor.InteractorModule;
 import labor.mobsoft.hu.mobilsoftlab.interactor.login.LoginInteractor;
 import labor.mobsoft.hu.mobilsoftlab.interactor.recipe.RecipesInteractor;
 import labor.mobsoft.hu.mobilsoftlab.mock.MockNetworkModule;
+import labor.mobsoft.hu.mobilsoftlab.network.NetworkModule;
 import labor.mobsoft.hu.mobilsoftlab.repository.RepositoryModule;
 import labor.mobsoft.hu.mobilsoftlab.ui.UIModule;
 import labor.mobsoft.hu.mobilsoftlab.ui.addrecipe.AddRecipeActivity;

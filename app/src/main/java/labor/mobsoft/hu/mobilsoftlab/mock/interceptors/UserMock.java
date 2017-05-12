@@ -3,7 +3,6 @@ package labor.mobsoft.hu.mobilsoftlab.mock.interceptors;
 import java.io.IOException;
 import java.util.List;
 
-import labor.mobsoft.hu.mobilsoftlab.model.Recipe;
 import labor.mobsoft.hu.mobilsoftlab.model.User;
 import labor.mobsoft.hu.mobilsoftlab.network.recipe.LoginApi;
 import labor.mobsoft.hu.mobilsoftlab.repository.MemoryRepository;
@@ -32,9 +31,9 @@ public class UserMock implements LoginApi {
 
             @Override
             public Response<List<User>> execute() throws IOException {
-                List<User> asd = memoryRepository.getUsers();
+                List<User> users = memoryRepository.getUsers();
 
-                return Response.success(memoryRepository.getUsers());
+                return Response.success(users);
             }
 
             @Override

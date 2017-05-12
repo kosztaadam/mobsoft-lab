@@ -64,9 +64,10 @@ public class ListPresenter extends Presenter<ListScreen> {
         } else {
             if (screen != null) {
                 screen.listRecipes(event.getRecipes());
-                for(Recipe r : event.getRecipes()) {
+
+                /*for(Recipe r : event.getRecipes()) {
                     screen.showMessage(r.getTitle());
-                }
+                }*/
             }
         }
     }

@@ -42,7 +42,7 @@ public interface RecipeApi {
      */
 
     @POST("recipe")
-    Call<List<Recipe>> recipePost(
+    Call<List<Recipe>> addRecipe(
             @Body Recipe body
     );
 

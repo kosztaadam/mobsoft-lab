@@ -62,14 +62,12 @@ public class RecipeDetailsPresenter extends Presenter<RecipeDetailsScreen> {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {
-                screen.showError("error");
+                screen.showMessage("error");
             }
             Log.e("Networking", "Error reading recipes", event.getThrowable());
         } else {
             if (screen != null) {
-                Log.d("asd", event.getRecipe().getTitle());
                 screen.showRecipeDetails(event.getRecipe());
-                screen.showError(event.getRecipe().getTitle());
             }
         }
     }
@@ -88,13 +86,13 @@ public class RecipeDetailsPresenter extends Presenter<RecipeDetailsScreen> {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {
-                screen.showError("error");
+                screen.showMessage("error");
             }
             Log.e("Networking", "Error reading recipes", event.getThrowable());
         } else {
             if (screen != null) {
                 screen.listScreen();
-                screen.showError("Elem sikeresen torolve!");
+                screen.showMessage("Elem sikeresen torolve!");
             }
         }
     }
