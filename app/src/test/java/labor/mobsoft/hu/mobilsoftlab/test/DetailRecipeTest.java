@@ -1,5 +1,9 @@
 package labor.mobsoft.hu.mobilsoftlab.test;
 
+import android.util.Log;
+
+import com.orm.SugarRecord;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -20,8 +24,11 @@ import labor.mobsoft.hu.mobilsoftlab.ui.details.RecipeDetailsPresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.details.RecipeDetailsScreen;
 import labor.mobsoft.hu.mobilsoftlab.ui.editrecipe.EditRecipePresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.editrecipe.EditRecipeScreen;
+import labor.mobsoft.hu.mobilsoftlab.ui.list.ListPresenter;
+import labor.mobsoft.hu.mobilsoftlab.ui.list.ListScreen;
 import labor.mobsoft.hu.mobilsoftlab.utils.RobolectricDaggerTestRunner;
 
+import static junit.framework.Assert.assertTrue;
 import static labor.mobsoft.hu.mobilsoftlab.TestHelper.setTestInjector;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -39,12 +46,21 @@ public class DetailRecipeTest {
     private RecipeDetailsPresenter recipeDetailsPresenter;
     private RecipeDetailsScreen recipeDetailsScreen;
 
+    private ListPresenter listPresenter;
+    private ListScreen listScreen;
+
     @Before
     public void setup() throws Exception {
         setTestInjector();
         recipeDetailsPresenter = new RecipeDetailsPresenter();
         recipeDetailsScreen = mock(RecipeDetailsScreen.class);
         recipeDetailsPresenter.attachScreen(recipeDetailsScreen);
+
+        listPresenter = new ListPresenter();
+        listScreen = mock(ListScreen.class);
+        listPresenter.attachScreen(listScreen);
+
+        listPresenter.refreshList();
     }
 
     @Test
@@ -68,13 +84,14 @@ public class DetailRecipeTest {
         verify(recipeDetailsScreen, times(1)).showRecipeDetails(userCaptor.capture());
 
         Recipe capturedRecipe = userCaptor.getValue();
-        assertEquals("Halaszle", capturedRecipe.getTitle());
+        assertEquals("Husleves", capturedRecipe.getTitle());
     }
 
 
     @After
     public void tearDown() {
         recipeDetailsPresenter.detachScreen();
+        listPresenter.detachScreen();
     }
 
 }

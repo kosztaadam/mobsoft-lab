@@ -52,6 +52,12 @@ public class MemoryRepository implements Repository {
 
     @Override
     public Recipe getRecipe(Long id) {
+        for (Recipe item : recipes) {
+            if (item.getId().equals(id)) {
+                return item;
+            }
+        }
+
         Recipe recipe = new Recipe();
         recipe.setId(id);
         return recipe;

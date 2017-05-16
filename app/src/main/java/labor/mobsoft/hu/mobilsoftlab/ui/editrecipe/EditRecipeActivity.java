@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import javax.inject.Inject;
 
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
@@ -33,6 +36,8 @@ public class EditRecipeActivity extends AppCompatActivity implements EditRecipeS
     @Inject
     EditRecipePresenter editRecipePresenter;
 
+    private Tracker mTracker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,10 @@ public class EditRecipeActivity extends AppCompatActivity implements EditRecipeS
         ratingBar = (RatingBar) findViewById(R.id.editrecipe_rating);
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
+
+        // Obtain the shared Tracker instance.
+        MobSoftApplication application = (MobSoftApplication) getApplication();
+        mTracker = application.getDefaultTracker();
 
     }
 
@@ -86,6 +95,9 @@ public class EditRecipeActivity extends AppCompatActivity implements EditRecipeS
                 startActivity(new Intent(EditRecipeActivity.this, ListActivity.class));
             }
         });
+
+        mTracker.setScreenName("Image~EditRecipeActivity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override

@@ -1,6 +1,8 @@
 package labor.mobsoft.hu.mobilsoftlab.interactor.recipe;
 
 
+import android.util.Log;
+
 import com.orm.SugarRecord;
 
 import org.greenrobot.eventbus.EventBus;

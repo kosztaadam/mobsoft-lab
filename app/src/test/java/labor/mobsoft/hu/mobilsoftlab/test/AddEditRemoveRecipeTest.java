@@ -21,6 +21,7 @@ import labor.mobsoft.hu.mobilsoftlab.ui.editrecipe.EditRecipePresenter;
 import labor.mobsoft.hu.mobilsoftlab.ui.editrecipe.EditRecipeScreen;
 import labor.mobsoft.hu.mobilsoftlab.utils.RobolectricDaggerTestRunner;
 
+import static junit.framework.Assert.assertTrue;
 import static labor.mobsoft.hu.mobilsoftlab.TestHelper.setTestInjector;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -69,6 +70,8 @@ public class AddEditRemoveRecipeTest {
 
         ArgumentCaptor<String> userCaptor = ArgumentCaptor.forClass(String.class);
         verify(addRecipeScreen, times(1)).showMessage(userCaptor.capture());
+        verify(addRecipeScreen, times(1)).addRecipe();
+
 
         List<String> capturedText = userCaptor.getAllValues();
         assertEquals("Elem sikeresen hozzáadva!", capturedText.get(0));
@@ -83,6 +86,7 @@ public class AddEditRemoveRecipeTest {
 
         ArgumentCaptor<String> userCaptor = ArgumentCaptor.forClass(String.class);
         verify(editRecipeScreen, times(1)).showMessage(userCaptor.capture());
+        verify(editRecipeScreen, times(1)).updateRecipe();
 
         List<String> capturedText = userCaptor.getAllValues();
         assertEquals("Elem sikeresen módosítva!", capturedText.get(0));
@@ -95,6 +99,7 @@ public class AddEditRemoveRecipeTest {
 
         ArgumentCaptor<String> userCaptor = ArgumentCaptor.forClass(String.class);
         verify(recipeDetailsScreen, times(1)).showMessage(userCaptor.capture());
+        verify(recipeDetailsScreen, times(1)).listScreen();
 
         List<String> capturedText = userCaptor.getAllValues();
         assertEquals("Elem sikeresen torolve!", capturedText.get(0));

@@ -86,7 +86,7 @@ public class SugarOrmRepository implements Repository {
 
     @Override
     public Recipe getRecipe(Long id) {
-
+        Log.d("asd", "lefut");
         //return Recipe.findById(Recipe.class, id);
         return SugarRecord.findById(Recipe.class, id);
     }

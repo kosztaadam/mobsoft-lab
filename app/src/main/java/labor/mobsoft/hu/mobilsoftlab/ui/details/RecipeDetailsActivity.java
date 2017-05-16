@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.net.MalformedURLException;
 
@@ -38,12 +40,18 @@ public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDe
     @Inject
     RecipeDetailsPresenter recipeDeatilsPresenter;
 
+    private Tracker mTracker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
         MobSoftApplication.injector.inject(this);
+
+        // Obtain the shared Tracker instance.
+        MobSoftApplication application = (MobSoftApplication) getApplication();
+        mTracker = application.getDefaultTracker();
     }
 
     @Override
@@ -55,6 +63,9 @@ public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDe
         Long id = Long.parseLong(intentExtras.getString("id"));
 
         recipeDeatilsPresenter.getRecipe(id);
+
+        mTracker.setScreenName("Image~RecipeDetailsActivity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
 

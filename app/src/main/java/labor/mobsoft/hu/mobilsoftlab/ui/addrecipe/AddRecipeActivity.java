@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import javax.inject.Inject;
 
 import labor.mobsoft.hu.mobilsoftlab.MobSoftApplication;
@@ -30,9 +33,10 @@ public class AddRecipeActivity extends AppCompatActivity implements AddRecipeScr
     private EditText etDescription;
     private RatingBar ratingBar;
 
-
     @Inject
     AddRecipePresenter addRecipePresenter;
+
+    private Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +79,18 @@ public class AddRecipeActivity extends AppCompatActivity implements AddRecipeScr
             }
         });
 
+        // Obtain the shared Tracker instance.
+        MobSoftApplication application = (MobSoftApplication) getApplication();
+        mTracker = application.getDefaultTracker();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         addRecipePresenter.attachScreen(this);
+
+        mTracker.setScreenName("Image~AddRecipeActivity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override

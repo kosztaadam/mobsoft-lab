@@ -13,6 +13,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +41,8 @@ public class ListActivity extends AppCompatActivity implements ListScreen {
 
     @Inject
     Repository repository;
+
+    private Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +76,9 @@ public class ListActivity extends AppCompatActivity implements ListScreen {
             }
         });
 
+        // Obtain the shared Tracker instance.
+        MobSoftApplication application = (MobSoftApplication) getApplication();
+        mTracker = application.getDefaultTracker();
     }
 
     @Override
@@ -78,6 +86,9 @@ public class ListActivity extends AppCompatActivity implements ListScreen {
         super.onStart();
         listPresenter.attachScreen(this);
         listPresenter.refreshList();
+
+        mTracker.setScreenName("Image~ListActivity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override
