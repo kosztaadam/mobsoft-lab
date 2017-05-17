@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="No recipe found! Add one..." />
+            android:text="Egy recept sem érthető el. Kérjük adj hozzá egyet..." />
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
